@@ -19,6 +19,10 @@ class TestTareas(unittest.TestCase):
         r = self.cliente.post("/tareas", json={})
         self.assertEqual(r.status_code, 400)
 
+    def test_titulo_muy_corto(self):
+        r = self.cliente.post("/tareas", json={"titulo": "ab"})
+        self.assertEqual(r.status_code, 400)
+
     def test_actualizar(self):
         self.cliente.post("/tareas", json={"titulo": "Estudiar"})
         r = self.cliente.put("/tareas/1", json={"completada": True})
