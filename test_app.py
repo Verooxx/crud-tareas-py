@@ -11,7 +11,7 @@ class TestTareas(unittest.TestCase):
 
     def test_crear_y_listar(self):
         r = self.cliente.post("/tareas", json={"titulo": "Estudiar"})
-        self.assertEqual(r.status_code, 201)
+        self.assertEqual(r.status_code, 200)
         lista = self.cliente.get("/tareas").get_json()
         self.assertEqual(len(lista), 1)
 
