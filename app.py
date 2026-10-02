@@ -18,6 +18,8 @@ def crear():
     titulo = datos.get("titulo")
     if not titulo:
         return jsonify({"error": "El título es obligatorio"}), 400
+    if len(titulo.strip()) < 3:
+        return jsonify({"error": "El título debe tener al menos 3 caracteres"}), 400
     tarea = {"id": siguiente_id, "titulo": titulo, "completada": False}
     siguiente_id += 1
     tareas.append(tarea)
