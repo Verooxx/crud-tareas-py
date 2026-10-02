@@ -39,6 +39,8 @@ def actualizar(tarea_id):
 @app.delete("/tareas/<int:tarea_id>")
 def eliminar(tarea_id):
     global tareas
+    if not any(t["id"] == tarea_id for t in tareas):
+        return jsonify({"error": "No encontrada"}), 404
     tareas = [t for t in tareas if t["id"] != tarea_id]
     return "", 204
 
