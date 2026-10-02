@@ -33,6 +33,9 @@ class TestTareas(unittest.TestCase):
         self.cliente.delete("/tareas/1")
         self.assertEqual(self.cliente.get("/tareas").get_json(), [])
 
+    def test_eliminar_inexistente(self):
+        r = self.cliente.delete("/tareas/99")
+        self.assertEqual(r.status_code, 404)
 
 if __name__ == "__main__":
     unittest.main()
