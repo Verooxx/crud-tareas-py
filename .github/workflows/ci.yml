@@ -22,6 +22,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar pruebas y generar reporte
+        shell: bash
         run: python -m unittest -v 2>&1 | tee reporte-pruebas.txt
 
       - name: Guardar el reporte
